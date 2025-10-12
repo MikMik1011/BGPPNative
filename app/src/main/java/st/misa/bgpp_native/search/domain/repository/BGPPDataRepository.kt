@@ -1,8 +1,8 @@
-package st.misa.bgpp_native.bgpp.domain.repository
+package st.misa.bgpp_native.search.domain.repository
 
-import st.misa.bgpp_native.bgpp.domain.model.City
-import st.misa.bgpp_native.bgpp.domain.model.Line
-import st.misa.bgpp_native.bgpp.domain.model.Station
+import st.misa.bgpp_native.search.domain.model.City
+import st.misa.bgpp_native.arrivals.domain.model.Line
+import st.misa.bgpp_native.search.domain.model.Station
 import st.misa.bgpp_native.core.domain.util.NetworkError
 import st.misa.bgpp_native.core.domain.util.Result
 

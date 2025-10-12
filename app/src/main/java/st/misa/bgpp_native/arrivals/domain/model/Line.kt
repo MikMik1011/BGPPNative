@@ -1,4 +1,4 @@
-package st.misa.bgpp_native.bgpp.domain.model
+package st.misa.bgpp_native.arrivals.domain.model
 
 data class Line(
     val id: String,

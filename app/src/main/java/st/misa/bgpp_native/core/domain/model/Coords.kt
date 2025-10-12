@@ -1,4 +1,4 @@
-package st.misa.bgpp_native.bgpp.domain.model
+package st.misa.bgpp_native.core.domain.model
 
 @JvmInline
 value class Coords(private val pair: Pair<Double, Double>) {

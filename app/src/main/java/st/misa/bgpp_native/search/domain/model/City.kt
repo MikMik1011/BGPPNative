@@ -1,4 +1,4 @@
-package st.misa.bgpp_native.bgpp.domain.model
+package st.misa.bgpp_native.search.domain.model
 
 data class City(
     val id: String,

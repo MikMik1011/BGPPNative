@@ -1,4 +1,4 @@
-package st.misa.bgpp_native.bgpp.presentation.search.components
+package st.misa.bgpp_native.search.presentation.search.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.PreviewDynamicColors
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import st.misa.bgpp_native.R
-import st.misa.bgpp_native.bgpp.presentation.models.StationUi
+import st.misa.bgpp_native.search.presentation.models.StationUi
 import st.misa.bgpp_native.ui.theme.BGPPTheme
 
 @Composable
@@ -97,6 +97,24 @@ fun StationListItem(
                     }
                 }
 
+                // Walking duration, if available
+                stationUi.walkingDurationInMinutes?.let { walking ->
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Icon(
+                            imageVector = ImageVector.vectorResource(id = R.drawable.ic_duration),
+                            contentDescription = "Walking Duration Icon",
+                            tint = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.size(16.dp)
+                        )
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(
+                            text = "${walking} min",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+
                 Spacer(modifier = Modifier.weight(1f)) // pushes ID to the end
 
                 // Station ID
@@ -121,7 +139,8 @@ fun StationListItemPreview(modifier: Modifier = Modifier) {
                 id = "123445",
                 name = "Narodnog fronta-Šekspirova park",
                 airDistanceInMeters = 462.0,
-                walkingDistanceInMeters = 512.23
+                walkingDistanceInMeters = 512.23,
+                walkingDurationInMinutes = 7
             ),
             onClick = {},
             modifier = modifier.background(MaterialTheme.colorScheme.background)

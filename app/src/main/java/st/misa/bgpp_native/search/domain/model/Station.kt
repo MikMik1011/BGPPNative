@@ -1,4 +1,6 @@
-package st.misa.bgpp_native.bgpp.domain.model
+package st.misa.bgpp_native.search.domain.model
+
+import st.misa.bgpp_native.core.domain.model.Coords
 
 data class Station(
     val id: String,

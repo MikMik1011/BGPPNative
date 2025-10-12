@@ -17,8 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import st.misa.bgpp_native.bgpp.presentation.search.SearchScreen
-import st.misa.bgpp_native.bgpp.presentation.search.components.StationListPreview
+import st.misa.bgpp_native.search.presentation.search.SearchScreen
 import st.misa.bgpp_native.ui.theme.BGPPTheme
 import st.misa.bgpp_native.ui.theme.BitcountFont
 

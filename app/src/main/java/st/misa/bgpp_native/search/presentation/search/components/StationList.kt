@@ -1,13 +1,11 @@
-package st.misa.bgpp_native.bgpp.presentation.search.components
+package st.misa.bgpp_native.search.presentation.search.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -15,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewDynamicColors
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import st.misa.bgpp_native.bgpp.presentation.models.StationUi
+import st.misa.bgpp_native.search.presentation.models.StationUi
 import st.misa.bgpp_native.ui.theme.BGPPTheme
 
 @Composable
@@ -46,9 +44,9 @@ fun StationList(
 
 
 internal val sampleStations = listOf(
-    StationUi("1", "Žarka Zrenjanina-Izvršno veće", 120.0, 123.0),
-    StationUi("2", "Svetozara Miletića", 450.0, 511.2),
-    StationUi("3", "Trg Slobode", 800.0, 823.4),
+    StationUi("1", "Žarka Zrenjanina-Izvršno veće", 120.0, 123.0, 3),
+    StationUi("123", "Svetozara Miletića", 450.0, 511.2, 8),
+    StationUi("0401B", "Trg Slobode", 800.0, 823.4, 12),
 )
 
 @PreviewLightDark

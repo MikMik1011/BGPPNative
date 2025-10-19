@@ -24,6 +24,7 @@ fun Station.toDb(): StationDbDto = StationDbDto(
     lat = coords.lat,
     lon = coords.lon,
     hash = hash,
+    favorite = favorite,
 )
 
 fun StationDbDto.toStation(city: City): Station = Station(
@@ -33,17 +34,19 @@ fun StationDbDto.toStation(city: City): Station = Station(
     coords = Coords(lat, lon),
     hash = hash,
     city = city,
+    favorite = favorite,
 )
 
-fun StationDbDto.toUi(): StationUi = StationUi(
+fun Station.toUi(
+    airDistanceInMeters: Double? = null,
+    walkingDistanceInMeters: Double? = null,
+    walkingDurationInMinutes: Int? = null,
+): StationUi = StationUi(
     id = id,
     name = name,
-    favorite = favorite
-)
-
-fun Station.toUi() : StationUi = StationUi(
-    id = id,
-    name = name,
+    airDistanceInMeters = airDistanceInMeters,
+    walkingDistanceInMeters = walkingDistanceInMeters,
+    walkingDurationInMinutes = walkingDurationInMinutes,
     favorite = favorite
 )
 

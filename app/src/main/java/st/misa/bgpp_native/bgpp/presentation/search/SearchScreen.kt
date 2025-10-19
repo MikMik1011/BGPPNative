@@ -1,103 +1,57 @@
 package st.misa.bgpp_native.bgpp.presentation.search
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
+import android.Manifest
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.tooling.preview.PreviewDynamicColors
-import androidx.compose.ui.tooling.preview.PreviewLightDark
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import st.misa.bgpp_native.R
-import st.misa.bgpp_native.bgpp.presentation.search.components.StationListPreview
-import st.misa.bgpp_native.ui.theme.BGPPTheme
+import org.koin.androidx.compose.koinViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchScreen(modifier: Modifier = Modifier) {
-    Scaffold(
-        floatingActionButton = {
-            FloatingActionButton(onClick = { /* TODO: Navigate to Map screen */ }) {
-                Icon(
-                    imageVector = ImageVector.vectorResource(id = R.drawable.ic_map),
-                    contentDescription = "Map Search"
+fun SearchScreen(
+    modifier: Modifier = Modifier,
+    viewModel: SearchViewModel = koinViewModel()
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+
+    // This exists only in UI (you cannot put this in ViewModel/Repository)
+    val permissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestMultiplePermissions()
+    ) { result ->
+        val granted = result.values.any { it }
+        if (granted) {
+            viewModel.onLocationPermissionGranted()
+        } else {
+            viewModel.onLocationPermissionDenied()
+        }
+    }
+
+    // Runs only once when screen opens
+    LaunchedEffect(Unit) {
+        if (!viewModel.hasLocationPermission()) {
+            permissionLauncher.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
                 )
-            }
-        },
-        topBar = {
-            TopAppBar(
-                title = { OutlinedTextField(
-                    value = "",
-                    onValueChange = {},
-                    placeholder = {
-                        Text(
-                            "Search stations",
-                            fontSize = 14.sp,
-                            lineHeight = 18.sp,
-                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f),
-                        )
-                    },
-                    leadingIcon = {
-                        Icon(
-                            imageVector = ImageVector.vectorResource(id = R.drawable.ic_search),
-                            contentDescription = "Search icon"
-                        )
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(50.dp),
-                    shape = RoundedCornerShape(20.dp),
-                    singleLine = true,
-                    textStyle = MaterialTheme.typography.bodyMedium
-                ) },
-                actions = {
-                    IconButton(onClick = {}) {
-                        Icon(
-                            imageVector = ImageVector.vectorResource(id = R.drawable.ic_more_vert),
-                            contentDescription = "Preferences"
-                        )
-                    }
-                }
             )
-        }
-    ) { padding ->
-        Column(
-            modifier = Modifier
-                .padding(padding)
-        ) {
-
-            val isLoading = false;
-
-            if (isLoading) {
-                CircularProgressIndicator(modifier = Modifier.padding(16.dp))
-            } else {
-                StationListPreview()
-            }
+        } else {
+            // Already granted
+            viewModel.onLocationPermissionGranted()
         }
     }
-}
 
-@PreviewLightDark
-@PreviewDynamicColors
-@Composable
-fun SearchScreenPreview(modifier: Modifier = Modifier) {
-    BGPPTheme {
-        SearchScreen(modifier)
-    }
-
+    // UI content (split into another file, unchanged)
+    SearchContent(
+        state = state,
+        onQueryChange = viewModel::onQueryChanged,
+        onOpenPreferences = viewModel::onOpenPreferences,
+        onClosePreferences = viewModel::onClosePreferences,
+        onApplyPreferences = viewModel::onPreferencesApplied,
+        onRefresh = viewModel::refresh,
+        modifier = modifier
+    )
 }

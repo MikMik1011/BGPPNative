@@ -14,13 +14,19 @@ interface StationDao {
     """)
     suspend fun searchStationsByIdPrefix(city: String, query: String): List<StationDbDto>
 
+//    @Query("""
+//        SELECT * FROM stations
+//        WHERE id IN (
+//            SELECT rowid FROM stations_fts
+//            WHERE stations_fts MATCH :query
+//        )
+//        AND city = :city
+//    """)
     @Query("""
         SELECT * FROM stations
-        WHERE id IN (
-            SELECT rowid FROM stations_fts
-            WHERE stations_fts MATCH :query
-        )
-        AND city = :city
+        WHERE city = :city
+          AND name LIKE '%' || :query || '%'
+        ORDER BY name ASC
     """)
     suspend fun searchStationsByName(city : String, query: String): List<StationDbDto>
 

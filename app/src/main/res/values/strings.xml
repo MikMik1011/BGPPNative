@@ -1,3 +1,44 @@
 <resources>
     <string name="app_name">BGPP Native</string>
+
+    <!-- Search screen -->
+    <string name="search_loading_cities">Loading cities…</string>
+    <string name="search_title">Search stations</string>
+    <string name="search_map_content_description">Map search</string>
+    <string name="search_preferences_content_description">Preferences</string>
+    <string name="search_placeholder">Search stations</string>
+    <string name="search_search_icon_content_description">Search</string>
+    <string name="search_using_city_center">Using city center for distances</string>
+    <string name="search_no_results">No stations match your criteria.</string>
+    <string name="search_retry">Retry</string>
+
+    <!-- Preferences dialog -->
+    <string name="search_preferences_title">Search preferences</string>
+    <string name="search_preferences_apply">Apply</string>
+    <string name="search_preferences_cancel">Cancel</string>
+    <string name="search_preferences_city_label">City</string>
+    <string name="search_preferences_select_city">Select a city</string>
+    <string name="search_preferences_available_cities">Available cities</string>
+    <string name="search_preferences_range_label">Range: %1$d m</string>
+    <string name="search_preferences_distance_type">Distance type</string>
+    <string name="search_preferences_distance_air">Air</string>
+    <string name="search_preferences_distance_walking">Walking</string>
+    <string name="search_preferences_osrm_label">OSRM base URL</string>
+
+    <!-- Error messages -->
+    <string name="error_no_internet">No internet connection</string>
+    <string name="error_serialization">Invalid server response</string>
+    <string name="error_unknown">Unexpected server error</string>
+    <string name="search_error_loading_cities">Unable to load cities: %1$s</string>
+    <string name="search_error_no_cities">No cities available at the moment.</string>
+    <string name="search_error_verifying_city">Unable to verify city data: %1$s</string>
+    <string name="search_error_downloading_stations">Unable to download stations: %1$s</string>
+
+    <!-- Location messages -->
+    <string name="location_error_missing_permission">Location permission not granted. Using the last selected city.</string>
+    <string name="location_error_provider_disabled">Location services are disabled. Using the last selected city.</string>
+    <string name="location_error_no_fix">Unable to determine your location. Using the last selected city.</string>
+    <string name="location_error_unknown">Unexpected location error. Using the last selected city.</string>
+    <string name="error_request_timeout">Request timeout</string>
+    <string name="error_rate_limited">You have sent too many request to the server, please try later</string>
 </resources>

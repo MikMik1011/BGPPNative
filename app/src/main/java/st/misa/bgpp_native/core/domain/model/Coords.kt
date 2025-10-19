@@ -2,12 +2,22 @@ package st.misa.bgpp_native.core.domain.model
 
 import kotlinx.serialization.Serializable
 
-@JvmInline
 @Serializable
-value class Coords(private val pair: Pair<Double, Double>) {
-    val lat: Double get() = pair.first
-    val lon: Double get() = pair.second
-    constructor(lat: Double, lon: Double) : this(lat to lon)
-    fun toPair(): Pair<Double, Double> = pair
-    override fun toString(): String = "Coords(lat=$lat, lon=$lon)"
+data class Coords(
+    val lat: Double,
+    val lon: Double
+) {
+
+    constructor(pair: Pair<Double, Double>) : this(
+        lat = pair.first,
+        lon = pair.second
+    )
+
+    constructor(arr: DoubleArray) : this(
+        lat = arr[0],
+        lon = arr[1]
+    )
+
+    fun toPair(): Pair<Double, Double> = lat to lon
+    fun toDoubleArray(): DoubleArray = doubleArrayOf(lat, lon)
 }

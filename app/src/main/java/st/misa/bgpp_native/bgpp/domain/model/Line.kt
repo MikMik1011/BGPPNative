@@ -1,11 +1,11 @@
 package st.misa.bgpp_native.bgpp.domain.model
 
 data class Line(
-    val id: String,
+    val number: String,
     val name: String,
     val arrivals: List<Arrival>,
 ) {
     override fun toString(): String {
-        return "Line(id='$id', name='$name', arrivals=$arrivals)"
+        return "Line( number='$number', name='$name', arrivals=$arrivals)"
     }
 }

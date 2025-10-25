@@ -29,7 +29,7 @@ fun ErrorContent(
             style = MaterialTheme.typography.bodyMedium,
             textAlign = TextAlign.Center
         )
-        Spacer(Modifier.height(16.dp))
+        Spacer(modifier.height(16.dp))
         TextButton(onClick = onRetry) {
             Text(stringResource(id = R.string.search_retry))
         }

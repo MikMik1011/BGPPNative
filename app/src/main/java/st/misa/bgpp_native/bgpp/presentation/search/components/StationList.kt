@@ -1,7 +1,6 @@
 package st.misa.bgpp_native.bgpp.presentation.search.components
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,8 +22,8 @@ fun StationList(
     modifier: Modifier = Modifier
 ) {
     LazyColumn(
-        verticalArrangement = Arrangement.spacedBy(4.dp),
-        contentPadding = PaddingValues(vertical = 8.dp)
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(stations, key = { it.id }) { station ->
             StationListItem(
@@ -32,7 +31,7 @@ fun StationList(
                 onClick = onClick,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 8.dp, vertical = 4.dp)
+                    .padding(vertical = 4.dp)
             )
             HorizontalDivider(
                 color = MaterialTheme.colorScheme.outlineVariant,

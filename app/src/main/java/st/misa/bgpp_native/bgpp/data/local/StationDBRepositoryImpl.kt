@@ -48,6 +48,9 @@ class StationDBRepositoryImpl(
     override suspend fun findFavoriteStations(city: City): List<Station> =
         stationDao.findFavoriteStations(city.id).map { it.toStation(city) }
 
+    override suspend fun getStationById(city: City, stationId: String): Station? =
+        stationDao.getStationById(city.id, stationId)?.toStation(city)
+
     override suspend fun toggleFavoriteStation(city: City, station: Station) {
         stationDao.toggleFavorite(city = city.id, stationId = station.id)
     }

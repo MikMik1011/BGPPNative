@@ -16,6 +16,7 @@ import st.misa.bgpp_native.bgpp.domain.repository.BGPPDataRepository
 import st.misa.bgpp_native.bgpp.domain.repository.DistanceRepository
 import st.misa.bgpp_native.bgpp.domain.repository.SearchPreferencesRepository
 import st.misa.bgpp_native.bgpp.domain.repository.StationDBRepository
+import st.misa.bgpp_native.bgpp.presentation.arrivals.ArrivalsViewModel
 import st.misa.bgpp_native.bgpp.presentation.search.SearchViewModel
 import st.misa.bgpp_native.core.data.location.DefaultLocationRepository
 import st.misa.bgpp_native.core.data.resources.AndroidStringProvider
@@ -74,6 +75,15 @@ val appModule = module {
             locationRepository = get(),
             distanceRepository = get(),
             stringProvider = get()
+        )
+    }
+
+    viewModel { (args: ArrivalsViewModel.Args) ->
+        ArrivalsViewModel(
+            remoteRepository = get(),
+            stationRepository = get(),
+            stringProvider = get(),
+            args = args
         )
     }
 }

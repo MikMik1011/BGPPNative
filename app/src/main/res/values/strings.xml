@@ -41,4 +41,30 @@
     <string name="location_error_unknown">Unexpected location error. Using the last selected city.</string>
     <string name="error_request_timeout">Request timeout</string>
     <string name="error_rate_limited">You have sent too many request to the server, please try later</string>
+
+    <!-- Arrivals screen -->
+    <string name="arrivals_title_placeholder">Bus arrivals</string>
+    <string name="arrivals_back_content_description">Back to search</string>
+    <string name="arrivals_refresh_content_description">Refresh arrivals</string>
+    <string name="arrivals_favorite_content_description">Toggle favorite station</string>
+    <string name="arrivals_map_content_description">Open map</string>
+    <string name="arrivals_error_missing_station">We couldn\'t find that station on this device.</string>
+    <string name="arrivals_error_loading_arrivals">Unable to load arrivals: %1$s</string>
+    <string name="arrivals_empty_state">No active arrivals for this station.</string>
+    <string name="arrivals_station_id">ID • %1$s</string>
+    <string name="arrivals_count">%1$d arrivals</string>
+    <string name="arrivals_eta_minutes">%1$d min</string>
+    <string name="arrivals_eta_stations">%1$d stops away</string>
+    <string name="arrivals_notify_content_description">Set an arrival reminder</string>
+    <string name="arrivals_eta_label">Next bus</string>
+    <string name="arrivals_eta_unknown">--</string>
+    <string name="arrivals_current_station">Currently near %1$s</string>
+    <string name="arrivals_notification_confirm">Save</string>
+    <string name="arrivals_notification_cancel">Cancel</string>
+    <string name="arrivals_notification_title">Get notified for %1$s</string>
+    <string name="arrivals_notification_subtitle">The bus is %1$d minutes away right now.</string>
+    <string name="arrivals_notification_minutes">Minutes</string>
+    <string name="arrivals_notification_stations">Stations</string>
+    <string name="arrivals_notification_minutes_label">Minutes away</string>
+    <string name="arrivals_notification_stations_label">Stations away</string>
 </resources>

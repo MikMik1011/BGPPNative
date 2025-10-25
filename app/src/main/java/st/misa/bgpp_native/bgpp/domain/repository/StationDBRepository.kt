@@ -10,6 +10,7 @@ interface StationDBRepository {
     suspend fun findNearbyStations(city: City, coords: Coords, radiusMeters: Double, limit: Int = 50): List<Station>
     suspend fun findStationsInBoundingBox(city: City, boundingBox: BoundingBox, limit: Int = 50) : List<Station>
     suspend fun findFavoriteStations(city: City): List<Station>
+    suspend fun getStationById(city: City, stationId: String): Station?
     suspend fun toggleFavoriteStation(city: City, station: Station)
     suspend fun updateStations(city: City, stations: List<Station>)
     suspend fun deleteStationsForCity(city: City)

@@ -33,7 +33,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -68,9 +69,10 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material)
     implementation(libs.androidx.material3)
     implementation(libs.compose.material.icons.extended)
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+    implementation(libs.kotlinx.serialization.json)
 
 
 
@@ -79,6 +81,7 @@ dependencies {
     implementation(libs.bundles.ktor)
 
     implementation(libs.bundles.room)
+    implementation(libs.material3)
     ksp(libs.androidx.room.compiler)
 
     implementation(libs.androidx.datastore.preferences)

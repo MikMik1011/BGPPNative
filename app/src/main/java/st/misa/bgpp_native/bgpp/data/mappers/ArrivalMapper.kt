@@ -7,5 +7,6 @@ fun ArrivalRemoteDto.toArrival() : Arrival = Arrival(
     etaSeconds = etaSeconds,
     etaStations = etaStations,
     garageNo = garageNo,
-    coords = coords
+    coords = coords,
+    currentStationName = currentStationName
 )

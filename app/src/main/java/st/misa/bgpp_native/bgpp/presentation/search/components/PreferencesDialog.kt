@@ -86,7 +86,7 @@ fun PreferencesDialog(
                     onExpandedChange = { expanded = it }
                 ) {
                     OutlinedTextField(
-                        modifier = Modifier.menuAnchor().fillMaxWidth(),
+                        modifier = modifier.menuAnchor().fillMaxWidth(),
                         readOnly = true,
                         value = cities.firstOrNull { it.id == selectedCityId }?.name
                             ?: stringResource(id = R.string.search_preferences_select_city),
@@ -137,9 +137,9 @@ fun PreferencesDialog(
                 }
 
                 if (distanceType == DistanceType.WALKING) {
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = modifier.height(8.dp))
                     OutlinedTextField(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = modifier.fillMaxWidth(),
                         value = osrmBaseUrl,
                         onValueChange = { osrmBaseUrl = it },
                         label = { Text(stringResource(id = R.string.search_preferences_osrm_label)) },

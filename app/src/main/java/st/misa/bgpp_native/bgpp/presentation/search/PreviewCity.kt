@@ -29,7 +29,8 @@ fun SearchScreenPreview() {
             onOpenPreferences = {},
             onClosePreferences = {},
             onApplyPreferences = {},
-            onRefresh = {}
+            onRefresh = {},
+            onStationSelected = {}
         )
     }
 }

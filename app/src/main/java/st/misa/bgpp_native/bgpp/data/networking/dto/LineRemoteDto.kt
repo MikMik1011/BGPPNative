@@ -4,11 +4,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class LineRemoteDto(
-    val id: String,
-    val name: String,
+    val lineNumber: String,
+    val lineName: String,
     val arrivals: List<ArrivalRemoteDto>,
 ) {
     override fun toString(): String {
-        return "Line(id='$id', name='$name', arrivals=$arrivals)"
+        return "Line(lineNumber='$lineNumber', lineName='$lineName', arrivals=$arrivals)"
     }
 }

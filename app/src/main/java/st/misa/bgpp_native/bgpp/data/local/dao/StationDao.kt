@@ -49,6 +49,9 @@ interface StationDao {
     @Query("SELECT * FROM stations WHERE city = :city AND favorite = 1")
     suspend fun findFavoriteStations(city: String): List<StationDbDto>
 
+    @Query("SELECT * FROM stations WHERE city = :city AND id = :stationId LIMIT 1")
+    suspend fun getStationById(city: String, stationId: String): StationDbDto?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStations(stations: List<StationDbDto>)
 

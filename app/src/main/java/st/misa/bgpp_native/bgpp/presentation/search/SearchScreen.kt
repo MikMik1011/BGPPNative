@@ -6,13 +6,16 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.koin.androidx.compose.koinViewModel
+import st.misa.bgpp_native.bgpp.domain.model.City
+import st.misa.bgpp_native.bgpp.presentation.models.StationUi
 
 @Composable
 fun SearchScreen(
     modifier: Modifier = Modifier,
+    onStationSelected: (StationUi, City) -> Unit = { _, _ -> },
     viewModel: SearchViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -52,6 +55,11 @@ fun SearchScreen(
         onClosePreferences = viewModel::onClosePreferences,
         onApplyPreferences = viewModel::onPreferencesApplied,
         onRefresh = viewModel::refresh,
+        onStationSelected = { station ->
+            state.selectedCity?.let { city ->
+                onStationSelected(station, city)
+            }
+        },
         modifier = modifier
     )
 }
